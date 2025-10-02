@@ -5,21 +5,30 @@ import Details from '../pages/Details'
 import { Protected } from './Protected'
 import MainLayout from './MainLayout'
 
-function App () {
+function App() {
   return (
     <Routes>
-      <Route path='/' element={<Home />} />
+      {/* Página inicial */}
+      <Route path="/" element={<Home />} />
 
-      <Route path='/dex' element={
-        <Protected>
-          <MainLayout />
-        </Protected>
-      }>
+      {/* Sección protegida */}
+      <Route
+        path="/dex"
+        element={
+          <Protected>
+            <MainLayout />
+          </Protected>
+        }
+      >
+        {/* Página principal del Dex */}
         <Route index element={<Dex />} />
-        <Route path=':name' element={<Details />} />
+
+        {/* Página de detalles de cada Pokémon */}
+        <Route path=":name" element={<Details />} />
       </Route>
 
-      <Route path='*' element={<h1>Not Found</h1>} />
+      {/* Manejo de rutas no encontradas */}
+      <Route path="*" element={<h1>Not Found</h1>} />
     </Routes>
   )
 }

@@ -35,7 +35,7 @@ interface Move {
 interface VersionGroupDetail {
   level_learned_at: number
   move_learn_method: MoveLearnMethod
-  order: any
+  order: number
   version_group: VersionGroup
 }
 

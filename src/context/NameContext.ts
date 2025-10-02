@@ -1,4 +1,4 @@
-import { createContext } from 'react'
+import { createContext, useContext } from "react"
 
 type NameContextType = {
   name: string
@@ -6,6 +6,14 @@ type NameContextType = {
   clearName: () => void
 }
 
-const NameContext = createContext<NameContextType | undefined>(undefined)
+const NameContext = createContext<NameContextType | null>(null)
+
+export const useName = () => {
+  const ctx = useContext(NameContext)
+  if (!ctx) {
+    throw new Error("useName debe usarse dentro de un <NameProvider>")
+  }
+  return ctx
+}
 
 export default NameContext
